@@ -14,8 +14,7 @@ public class Util {
 
 			configProp = new Properties();
 
-			InputStream in = this.getClass().getClassLoader()
-					.getResourceAsStream("config.properties");
+			InputStream in = Util.class.getResourceAsStream("config.properties");
 			try {
 				configProp.load(in);
 			} catch (IOException e) {

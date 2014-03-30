@@ -11,12 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-
 public class FpsServlet extends HttpServlet {
 
-
 	final static Logger logger = LoggerFactory.getLogger(FpsServlet.class);
-
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
@@ -26,22 +23,21 @@ public class FpsServlet extends HttpServlet {
 		PrintWriter out = resp.getWriter();
 		resp.setContentType("text/html");
 
-//		String remoteId = req.getRemoteAddr();
-//		String remoteHost = req.getRemoteHost();
-		
-		logger.debug("Request Parameters . X {} ,Y {}", x,
-				y);
+		// String remoteId = req.getRemoteAddr();
+		// String remoteHost = req.getRemoteHost();
 
-		
+		logger.debug("Request Parameters . X {} ,Y {}", x, y);
 
 		try {
 			// ApplicationContext context = new ClassPathXmlApplicationContext(
 			// "application-context.xml");
 
+			TimeProviderIntf timeProv = new MuslimSalatImpl();
+			String response = timeProv.getTime(x, y);
 
 			StringBuffer xmlStr = new StringBuffer();
-			xmlStr.append("deneme");
-			
+			xmlStr.append(response);
+
 			logger.debug("Response Message {}", xmlStr.toString());
 			out.print(xmlStr.toString());
 		} catch (Exception e) {
