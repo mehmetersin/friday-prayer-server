@@ -16,7 +16,7 @@ public class FpsServerStarter {
 
 		Util util = new Util();
 
-		String port = "2626" ;//util.getConfig("serverPort");
+		String port = "2727" ;//util.getConfig("serverPort");
 
 		Server server = new Server(Integer.valueOf(port));
 
